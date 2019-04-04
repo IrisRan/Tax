@@ -691,7 +691,7 @@ Page({
   getInput: function (e) {
     var parentIndex = e.currentTarget.dataset.index /*父坐标*/
     var childIndex = e.currentTarget.dataset.itemIndex /*子坐标*/
-    var emission = e.detail.value /*输入的排放量*/
+    var emission = e.detail.value /*排放量*/
     var equivalent = this.data.menu[parentIndex].items[childIndex].equivalent /*将污染当量取出 */
     var activeCount = 0
     var temp
