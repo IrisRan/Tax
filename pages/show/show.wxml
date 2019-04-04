@@ -1,0 +1,28 @@
+<view class="container">
+  <view class='center'>
+    <view class='center-top'>
+      <view class='your-tax'> 环保税合计(元)</view>
+      <view class='tax'>
+        {{allTax}}
+      </view>
+    </view>
+    <view id="panel" class="flex-column">
+      <view class="flex-cell flex-row">
+        <text class="flex-cell flex-row">大气污染税额(元)</text>
+        <text class="flex-cell flex-row">{{atmosphereTax}}</text>
+      </view>
+      <view class="flex-cell flex-row">
+        <text class="flex-cell flex-row">水污染税额(元)</text>
+        <text class="flex-cell flex-row">{{waterTax}}</text>
+      </view>
+      <view class="flex-cell flex-row">
+        <text class="flex-cell flex-row">固体污染税额(元)</text>
+        <text class="flex-cell flex-row">{{solidTax}}</text>
+      </view>
+      <view class="flex-row flex-cell">
+        <text class="flex-cell flex-row">噪声污染税额(元)</text>
+        <text class="flex-cell flex-row">{{noiseTax}}</text>
+      </view>
+    </view>
+  </view>
+</view>

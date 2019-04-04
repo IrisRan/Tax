@@ -1,0 +1,53 @@
+<!--pages/order/order.wxml-->
+
+<!--container-->
+  <!--header-->
+  <view class="header">
+    <view class="city">
+      <picker bindchange="cityselect" value="{{cityIndex}}" range="{{cityArray}}" class="pick">
+      {{cityArray[cityIndex]}}
+      </picker>
+    </view>
+    <view class="remainder">
+      <text bindtap="policy">了解环保税政策</text>
+    </view>
+  </view>
+  <!--header-->
+
+  <!--main-->
+    <view class="menu-n-items" wx:if="{{status==0||item.status==status}}">
+      <!--menu-->
+      <view class="menu">
+        <scroll-view scroll-y="true">
+          <view wx:for="{{menu}}" class="menu-item" bindtap='selectMenu' data-item-index="{{index}}">
+            <view class="text">
+              {{item.name}}
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      <!--menu-->
+      <!--items-->
+      <scroll-view scroll-y="true" scroll-into-view="{{toView}}" class="items">
+        <view wx:for="{{menu}}" class="items-list items-list-hook" wx:for-index="parentIndex">
+          <view id="menu{{parentIndex}}" class="title">{{item.name}}</view>
+          <view wx:for="{{item.items}}" class="item-item" wx:for-item="item">
+            <view class="content">
+              <view class="name">{{item.name}}</view>
+            </view>
+            <input class="input" type='digit' placeholder="{{item.place}}" data-item-index="{{index}}" data-index="{{parentIndex}}" bindinput='getInput'></input>
+          </view>
+        </view>
+      </scroll-view>
+      <!--items-->
+
+    </view>
+
+  <!--main-->
+  <!--cart-->
+  <view class="cart">
+    <view class="count">共{{count}}项</view>
+    <view class="sum" bindtap='getTax'>计算</view>
+  </view>
+  <!--cart-->
+<!--container-->
