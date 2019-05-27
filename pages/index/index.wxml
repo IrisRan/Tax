@@ -27,23 +27,77 @@
         </scroll-view>
       </view>
       <!--menu-->
+
       <!--items-->
       <scroll-view scroll-y="true" scroll-into-view="{{toView}}" class="items">
         <view wx:for="{{menu}}" class="items-list items-list-hook" wx:for-index="parentIndex">
-          <view id="menu{{parentIndex}}" class="title">{{item.name}}</view>
-          <view wx:for="{{item.items}}" class="item-item" wx:for-item="item">
+          <view id="menu{{parentIndex}}" class='title'>
+            <view class="title-name">{{item.name}}</view>
+
+            <view class="drain" wx:if="{{parentIndex==0}}">
+               <!-- 下拉框 -->
+                <view class="top_selected" data-index="{{parentIndex}}" bindtap='bindShowAtm'>
+                   <text>第{{selectedAtm}}个排放口</text>
+                </view>
+                <!-- 下拉需要显示的列表 -->
+                <view class="select_box" wx:if="{{selectAtm}}">
+                  <view wx:for="{{atmDrains}}" wx:key="unique">
+                    <view class="select_one" bindtap="selectAtmDrain" data-index="{{parentIndex}}" data-id="{{item}}">第{{item}}个排放口</view>
+                  </view>
+                </view>
+                
+            </view> 
+
+            <view class="drain" wx:if="{{parentIndex==1}}">
+               <!-- 下拉框 -->
+                <view class="top_selected" data-index="{{parentIndex}}" bindtap='bindShowWat'>
+                   <text>第{{selectedWat}}个排放口</text>
+                </view>
+                <!-- 下拉需要显示的列表 -->
+                <view class="select_box" wx:if="{{selectWat}}">
+                  <view wx:for="{{watDrains}}" wx:key="unique">
+                    <view class="select_one" bindtap="mySelect" data-name="{{item}}">第{{item}}个排放口</view>
+                  </view>
+                </view>
+                
+            </view>
+
+            <view class="addDrain" wx:if="{{parentIndex==0 || parentIndex==1}}" data-index="{{parentIndex}}"  bindtap='addDrain'>
+              <view class="plus-icon"/>
+            </view>
+            
+          </view>
+          
+          
+          <view wx:for="{{item.items}}" wx:for-index="stepIndex">
+            <scroll-view scroll-y="true">
+            <view wx:for="{{item.stepItems}}" wx:for-item="item" class="item-item">
+              <view class="content">
+                <view class="name">{{item.name}}</view>
+              </view>
+              <view class="inputBox">
+                <input class="input" type='digit' placeholder="{{item.place}}" data-item-index="{{index}}" data-step-index="{{stepIndex}}" data-index="{{parentIndex}}" bindinput='getInput'></input>
+              </view>
+            </view>
+            </scroll-view>
+          </view>
+
+          <!--view wx:for="{{item.items}}" class="item-item" wx:for-item="item">
             <view class="content">
               <view class="name">{{item.name}}</view>
             </view>
-            <input class="input" type='digit' placeholder="{{item.place}}" data-item-index="{{index}}" data-index="{{parentIndex}}" bindinput='getInput'></input>
-          </view>
+            <view class="inputBox">
+              <input class="input" type='digit' placeholder="{{item.place}}" data-item-index="{{index}}" data-index="{{parentIndex}}" bindinput='getInput'></input>
+            </view>
+          </view-->
+
         </view>
       </scroll-view>
       <!--items-->
-
     </view>
 
   <!--main-->
+  
   <!--cart-->
   <view class="cart">
     <view class="count">共{{count}}项</view>

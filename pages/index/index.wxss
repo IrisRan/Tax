@@ -29,7 +29,7 @@
   position: absolute;
   width: 100%;
   top: 40px;
-  bottom: 80px;
+  bottom: 50px;
   overflow: hidden;
 }
 
@@ -77,12 +77,104 @@
 .menu-n-items .items .items-list .title {
   padding-left: 14px;
   height: 26px;
+  width: 100%;
   line-height: 26px;
   border-left: 2px solid #d9dde1;
-  font-size: 12px;
-  color: rgb(147, 153, 159);
   background: #f3f5f7;
 }
+
+.menu-n-items .items .items-list .title .title-name {
+  color: rgb(147, 153, 159);
+  width: 28%;
+  height: 26px;
+  font-size: 12px;
+  position: absolute;
+  float: left;
+  /*display: inline-block;*/
+}
+
+.menu-n-items .items .items-list .title .drain {
+  width: 45%;
+  height: 26px;
+  margin-left: 30%;
+  color: #99CC33;
+  font-size: 12px;
+  float: left;
+}
+
+/*****************************************/
+/* 下拉框 */
+.menu-n-items .items .items-list .title .drain .top-selected{
+  width: 100%;
+  display: flex;
+  float: left;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+/* 下拉内容 */
+.menu-n-items .items .items-list .title .drain .select_box {  
+    position: fixed;
+    z-index: 20;
+    overflow: hidden;
+    text-align: left;
+    animation: myfirst;
+    background-color: #fff;
+    -webkit-box-shadow: 4px 4px 8px #ccc;   
+    -moz-box-shadow: 4px 4px 8px #ccc;   
+    box-shadow: 4px 4px 8px #ccc;
+}
+.menu-n-items .items .items-list .title .drain .select_box .select_one {
+    width: 140px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow:scroll;
+    font-size: 14px;
+    line-height: 30px;
+    vertical-align: middle; 
+    color: #666;
+    background-color: #fff;
+}/* 下拉过度效果 */@keyframes myfirst {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 100px;
+    }}
+/*****************************************/
+/****加号*********/
+.menu-n-items .items .items-list .title .addDrain {
+  height: 26px;
+  width: 20%;
+  float: left;
+  padding-left: 10px;
+  vertical-align:middle; 
+}
+ 
+.menu-n-items .items .items-list .title .addDrain .plus-icon {
+  /*display: inline-block;*/
+  background: #99CC33;
+  height: 20px;
+  position: relative;
+  vertical-align:middle; 
+  width: 2px;
+}
+        
+.menu-n-items .items .items-list .title .addDrain .plus-icon:after {
+  background: #99CC33;
+  content: "";
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  vertical-align:middle; 
+  transform: rotateZ(90deg)
+}
+/************************************************/
 
 .menu-n-items .items .items-list .item-item {
   display: flex;
@@ -105,10 +197,15 @@
   overflow: hidden;
 }
 
-.menu-n-items .items .items-list .item-item .input {
+.menu-n-items .items .items-list .item-item .inputBox {
   font-size: 14px;
   vertical-align: middle;
   width: 70%;
+}
+
+.menu-n-items .items .items-list .item-item .inputBox .input {
+  vertical-align: middle;
+  width: 120px;
 }
 
 .cart {
@@ -117,7 +214,7 @@
   position: absolute;
   bottom: 0px;
   align-items: center;
-} 
+}
 
 .cart .count {
   font-size: 16px;
